@@ -4,7 +4,7 @@ Version: 0.1a
 Requires: ioke
 
 Run commands
-ioke HelloWorld.ik ## Outputs basic HelloWorld info to commandline
+ioke HelloWorld.ik ## Outputs basic HelloWorld info to command line
 
 
 File list

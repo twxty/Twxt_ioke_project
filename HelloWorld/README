@@ -1,0 +1,12 @@
+Project: twxt/ioke/HelloWorld
+Discription: ioke HelloWorld projects for basic functions
+Version: 0.1a
+Requires: ioke
+
+Run commands
+ioke HelloWorld.ik ## Outputs basic HelloWorld info to commandline
+
+
+File list
+README
+HelloWorld.ik

@@ -180,5 +180,5 @@ xmlID = xmlID - 1
 HtmlOutPage = HtmlOutPage + (#[  ]*xmlID) + (#[</html>\n])
 
 HtmlOutPage println
-;;WriteFile("index.html", fileLocation: "/home/twxt/Documents/WebSites/tests/", HtmlOutPage)
+;;WriteFile("index.html", fileLocation: baseDir, HtmlOutPage)
 ;;funcIndex println

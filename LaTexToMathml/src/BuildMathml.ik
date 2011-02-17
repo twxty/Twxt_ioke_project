@@ -1,34 +1,12 @@
 ;;mathml build file
 
+
 use("LaTexLists.ik")
 use("MathmlLists.ik")
 
-;; setting constants
-;;htmlHeader = #[xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"]
-;;MathsHeader = #[xmlns="http://www.w3.org/1998/Math/MathML"]
-;;PM = PlusMinusSign = "&#xB1"
-;;InvisibleTimes = "&#x2062"
-;;PM println
 
 HtmlOutPage = htmlHead
-;;HtmlOutPage println
-funcIndex = [0]
 xmlID = 1
-baseDir = "#{System currentWorkingDirectory}/"
-fLoc = #[vars]
-
-WriteFile = method(fileName, fileLocation: baseDir, fileContent,
-  if(FileSystem exists?(fileLocation + fileName),
-    FileSystem removeFile!(fileLocation + fileName)
-  )
-  FileSystem withOpenFile(fileLocation + fileName, fn(out, out println(fileContent)))
-  ;;("file : " + fileName + "printed to : " + fileLocation + "\n contains :" + fileContent) println
-)
-
-
-(#[Grabing from ] + baseDir + fLoc) println
-formula = FileSystem readLines(baseDir + fLoc)
-
 ;;body starts
 HtmlOutPage = HtmlOutPage + (#[  ]*xmlID) + htmlBodyHead
 ;;para starts
@@ -40,7 +18,23 @@ HtmlOutPage = HtmlOutPage + (#[  ]*xmlID) + (#[<mrow>\n])
 xmlID = xmlID + 1
 
 
-formula println
+funcIndex = [0]
+
+baseDir = "#{System currentWorkingDirectory}/"
+fLoc = #[vars]
+formula = FileSystem readLines(baseDir + fLoc)
+;;formula println
+;;(#[Grabing from ] + baseDir + fLoc) println
+
+
+WriteFile = method(fileName, fileLocation: baseDir, fileContent,
+  if(FileSystem exists?(fileLocation + fileName),
+    FileSystem removeFile!(fileLocation + fileName)
+  )
+  FileSystem withOpenFile(fileLocation + fileName, fn(out, out println(fileContent)))
+  ("file : " + fileName + "printed to : " + fileLocation + "\n contains :\n" + fileContent) println
+)
+
 
 (formula length) times(i,
   n = 0
@@ -179,6 +173,5 @@ HtmlOutPage = HtmlOutPage + (#[  ]*xmlID) + (#[</body>\n])
 xmlID = xmlID - 1
 HtmlOutPage = HtmlOutPage + (#[  ]*xmlID) + (#[</html>\n])
 
-HtmlOutPage println
 ;;WriteFile("index.html", fileLocation: baseDir, HtmlOutPage)
-;;funcIndex println
+

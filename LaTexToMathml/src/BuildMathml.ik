@@ -1,3 +1,5 @@
+#!/usr/bin/env ioke
+
 ;;mathml build file
 
 

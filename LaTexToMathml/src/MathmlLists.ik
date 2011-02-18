@@ -13,14 +13,15 @@ MathmlLists = Origin mimic do(
   ;;"MathsmlLists loaded" println
 
   Ground htmlHead = #[
-<head>
-  <meta charset="utf-8" /> 
-  <meta name="language" content="en-US" /> 
-  <meta name="description" content="Example of MathML embedded in an HTML5 file" /> 
-  <meta name="keywords" content="Example of MathML embedded in an HTML5 file" /> 
-  <title>My ioke latex to MathML embedded in an HTML5 file example</title> 
-</head>
-<body>
+<html>
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="language" content="en-US" /> 
+    <meta name="description" content="Example of MathML embedded in an HTML5 file" /> 
+    <meta name="keywords" content="Example of MathML embedded in an HTML5 file" /> 
+    <title>My ioke latex to MathML embedded in an HTML5 file example</title> 
+  </head>
+  <body>
 ]
 
   Ground htmlBodyHead = #[<h1>Example of MathML embedded in an HTML5 file</h1>

@@ -20,7 +20,6 @@ formula = FileSystem readLines(baseDir + fLoc)
 ;;(#[Grabing from ] + baseDir + fLoc) println
 
 
-
 WriteFile = method(fileName, fileLocation: baseDir, fileContent,
   if(FileSystem exists?(fileLocation + fileName),
     FileSystem removeFile!(fileLocation + fileName)

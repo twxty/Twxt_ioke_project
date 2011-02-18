@@ -1,3 +1,4 @@
+#!/usr/bin/env ioke
 ;;LaTex list
 
 

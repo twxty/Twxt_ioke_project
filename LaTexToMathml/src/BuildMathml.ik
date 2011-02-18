@@ -5,11 +5,25 @@
 
 use("LaTexLists.ik")
 use("MathmlLists.ik")
+use("MathsmlOutPut.ik")
 
 HtmlOutPage = htmlFullHead
 xmlID = 5
 tab = "  "
 funcIndex = [0]
+;;htmlBuildPage = nil
+;;htmlBuildPage append!( [[#[index]], [#[value]], [#[start]], [#[end]], [#[operatorStart]], [#[operatorEnd]]] )
+htmlBuildPage = []
+;;htmlBuildPage << { index: #[index], value: #[value], start: #[start] , end: #[end], operatorStart: #[operatorStart], operatorEnd: #[operatorEnd] }
+;;htmlBuildPage << { index: 1, value: #[ ], start: 1 , end: 2, operatorStart: #[ ], operatorEnd: #[ ] }
+
+
+htmlBuildPage append!( [[#[index]], [#[value]], [#[start]], [#[end]], [#[operatorStart]], [#[operatorEnd]]])
+htmlBuildPage append!( [[2], [#[]], [1], [1], [#[]], [#[]]])
+
+
+;;htmlBuildPage println
+;;htmlBuildPage[1][1] println
 
 webDir = #[/home/twxt/Documents/WebSites/tests/]
 baseDir = "#{System currentWorkingDirectory}/"
@@ -28,6 +42,61 @@ WriteFile = method(fileName, fileLocation: baseDir, fileContent,
 ;;  ("file : " + fileName + "printed to : " + fileLocation + "\n contains :\n" + fileContent) println
 )
 
+LCharFol = (FileSystem readFully(baseDir + fLoc)) chars
+
+
+;;(LCharFol length) times(s, LCharFol[s] println)
+;;LCharFol println
+;;LCharFol = ((FileSystem readFully(baseDir + fLoc)) split("")) trim
+;;LCharFol = (FileSystem readFully(baseDir + fLoc)) 
+;;MathsmlOutPut SplitString( LCharFol )
+;;LCharFol println
+;;LCharFol[0..-1] println
+;;(LaTexSlhScanForwardEnd include?(LCharFol[17..17])) println
+;;MathsmlOutPut SortMathmlString( LCharFol, LaTexSpc, LaTexSpc )
+;;LCharFol println
+
+iuytr = []
+iuytr = [#[<ni>],#[</ni>]]
+MathsmlOutPut SortMathmlString( LCharFol, LaTexSlhScanForwardStart, LaTexSlhScanForwardEnd )
+;;MathsmlOutPut TypeMathmlString( LCharFol, LaTexAlp, [#[<ni>],#[</ni>]]);;[#[<ni>]])
+LCharFol println 
+
+   2 times(p,
+      p println
+      iuytr[p] println
+      let(tempMathmlString, LCharFol, 
+	let( i, 0,
+;;	  ("start string" + LCharFol) println
+	  while(i < (LCharFol length),
+	    if(LaTexAlp include?( LCharFol[i] ),
+		tempMathmlString[i] = [tempMathmlString[i]] + [iuytr[(p)]]
+			  
+	    );; if
+	    i++
+	  );; while i
+	("\n LCharFol " + p + " in line\n\n" + LCharFol) println
+	);; let i
+;;	tempMathmlString println
+	
+      );; let tempString
+    );; times ListCounter
+  );;let
+  );; TypeMathmlString
+
+
+
+;;htmlBuildPage append!( [[((htmlBuildPage length) + 1)], [#[]], [], [], [#[]], [#[]]])
+;;htmlBuildPage append!( [[((htmlBuildPage length) + 1)], [#[]], [], [], [], []])
+;;htmlBuildPage append!( [[((htmlBuildPage length) + 1)], [#[base]], [1], [2], [htmlFullHead], [htmlFullFoot]])
+
+;;htmlBuildPage
+;;htmlBuildPage println
+
+
+
+;;htmlBuildPage println
+;;testA[20] println
 
 (formula length) times(i,
   n = 0
@@ -147,7 +216,9 @@ WriteFile = method(fileName, fileLocation: baseDir, fileContent,
 
 	LaTexAlp include?(FIJ), 
 ;;	  ("Its a Text!= " + formula[i][(j + n)..(j + n)]) println
-	  HtmlOutPage = HtmlOutPage + (tab*xmlID) + (#[<mi>]) + FIJ + (#[</mi>\n]),
+;;	  htmlBuildPage append!( [[((htmlBuildPage length) + 1)], [FIJ], [(htmlBuildPage length)], [], [#[<mi>]], [#[</mi>]]])
+	  HtmlOutPage = HtmlOutPage + (tab*xmlID) + (#[<mi>]) + FIJ + (#[</mi>\n])
+	  ,
 
 
 	LaTexSpc include?(FIJ),

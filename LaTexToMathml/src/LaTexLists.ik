@@ -12,6 +12,10 @@ LaTexLists = Origin mimic do(
   Ground LaTexFBE = ["}"]
   Ground LaTexAlp = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   Ground LaTexSpc = [" "]
+  Ground LaTexSlhScanForwardStart = ["\\"]
+  Ground LaTexSlhScanForwardEnd = [" ", "{"]
+  Ground LaTexFBSScanForwardStart = ["{"]
+  Ground LaTexFBEScanForwardEnd = ["}"]
 
 ;;"LaTexLists loaded" println
 
